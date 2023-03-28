@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+/*
+**********************************************************************
+
+* default.css
+
+* site name   : 
+* description : initial setting
+* since       : 
+* editor      : 
+* modified    : 
+* editor      :
+
+*********************************************************************
+*/
+
+/*
+===== CONTENTS ===========================================
+
+	1: universal reset 
+	2: body and base setting
+		: general params
+		: acronyms and abbreviations styles
+	3: link setting
+
+==========================================================
+*/
+
+
+/*
+==========================================================
+
+* 1: universal reset
+
+==========================================================
+*/
+
+/*
+==========================================================
+
+* 2: body and base setting
+
+==========================================================
+*/
+
+body {
+font-size:13px;
+line-height:1.4;
+}
+* html body {
+font-size:82%;
+}
+*:first-child+html body {
+font-size:82%;
+}
+
+
+/* general params
+--------------------*/
+h1, h2, h3, h4, h5, h6,
+div, p, pre, ul, ol, dl, dt, dd,
+address, form, blockquote {
+margin:0;
+padding:0;/* margin&padding reset */
+display:block;
+font-size:100%;
+}
+table,caption,td,th {
+margin:0;
+padding:0;
+border-collapse:collapse;
+empty-cells:show;
+font-size:100%;
+}
+hr {
+display:none;
+}
+img,a img {
+border:none;/* img do not want a border */
+}
+ul,
+ol {
+list-style:none;/* link do not want a dot */
+}
+
+/* iframe styles */
+iframe {
+margin:0;
+padding:0;
+border:0;
+font-size:100%;
+}
+
+/* form styles */
+form, fieldset, optgroup,
+label, legend {
+margin:0;
+padding:0;
+font-size:100%;
+border:none;
+}
+legend {
+display:none;
+}
+input,select {
+margin:0;
+}
+option {
+padding-right:10px;
+}
+html>/**/body label {/* hack for modern browser-except IE7.0 */
+margin-left:4px;
+}
+/* inline styles */
+span, em, strong, dfn, code, samp, kbd, var, cite, abbr, acronym, q, br,
+ins, del, a, img, object {
+margin:0;
+padding:0;
+border:0;
+font-style:normal;
+font-weight:inherit;
+font-size:100%;
+}
+em, strong {
+font-weight:bold;
+}
+
+/* acronyms and abbreviations styles 
+-------------------------------------*/
+acronym,abbr {
+cursor:help;
+}
+
+/*
+==========================================================
+
+* 3: link setting
+
+==========================================================
+*/
+a:link {
+color:#0000FE;
+text-decoration:underline;
+}
+a:visited {
+color:#0000FE;
+text-decoration:underline;
+}
+a:hover {
+color:#0000FE;
+text-decoration:none;
+}
