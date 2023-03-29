@@ -37,7 +37,7 @@
       }
       //-->
     </script>
-    <form id="formLang1" name="formLang1" action="./PersonalInfoInput" method="post">
+    <form id="formLang1" name="formLang1" action="./CreatePersonalInfoController" method="post">
       <input type="hidden" name="lang" value="">
       <input type="hidden" name="service_id" value="top">
       <div id="language" align="right">
@@ -93,7 +93,7 @@
       </div>
       <h2 class="path">楽天会員登録</h2>
 
-      <form name="Regist1Form" method="post" action="./PersonalInfoInput" autocomplete="off">
+      <form name="Regist1Form" method="post" action="./CreatePersonalInfoController" autocomplete="off">
         <input type="hidden" name="service_id" value="top">
 
         <div id="step1" class="step">

@@ -16,14 +16,14 @@ import service.UserInfoService;
 /**
  * Servlet implementation class CreateUser
  */
-@WebServlet("/ConfirmtionUserInfo")
-public class UserInfoConfirmtionControoler extends HttpServlet {
+@WebServlet("/UserInfoConfirmtionController")
+public class UserInfoConfirmtionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UserInfoConfirmtionControoler() {
+	public UserInfoConfirmtionController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

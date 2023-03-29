@@ -14,14 +14,14 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class CreateUser
  */
-@WebServlet("/PersonalInfoInput")
-public class PersonalInfoInput extends HttpServlet {
+@WebServlet("/CreatePersonalInfoController")
+public class CreatePersonalInfoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public PersonalInfoInput() {
+	public CreatePersonalInfoController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -59,7 +59,7 @@ public class PersonalInfoInput extends HttpServlet {
 		System.out.println(lname_kana);
 		System.out.println(fname_kana);
 
-		String view = "/PersonalInfoInput.jsp";
+		String view = "/InputPersonalInfoScreen.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
@@ -93,10 +93,10 @@ public class PersonalInfoInput extends HttpServlet {
 
 		//セッションの設定
 		HttpSession session = request.getSession();
-		String userId = "radio_mail";
-		String password = "p";
-		String userName = ("lname" + "fname");
-		String nameKana = ("lname_kana" + "fname_kana");
+		String userId = radio_mail;
+		String password = p;
+		String userName = lname+ fname;
+		String nameKana = lname_kana + fname_kana;
 		session.setAttribute("email", email);
 		session.setAttribute("userId", userId);
 		session.setAttribute("password", password);

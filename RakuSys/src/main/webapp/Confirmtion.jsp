@@ -207,7 +207,7 @@
             </table>
 
 
-            <form name="DynaForm" method="post" action="./ConfirmtionUserInfo" autocomplete="off">
+            <form name="DynaForm" method="post" action="./UserInfoConfirmtionController" autocomplete="off">
                 <input type="hidden" name="service_id" value="top">
                 <input type="submit" value="<<入力画面に戻って変更する" a href="http://localhost:8080/RakuSys/CreateUser">
             </form>
@@ -215,7 +215,7 @@
             <br>
             <br>
 
-            <form name="Regist3Form" method="post" action="./ConfirmtionUserInfo" autocomplete="off" id="regist3Form">
+            <form name="Regist3Form" method="post" action="./UserInfoConfirmtionController" autocomplete="off" id="regist3Form">
                 <input type="hidden" name="service_id" value="top">
 
                 <div style="border: 1px solid #000000; padding: 5px; margin: 5px;">
