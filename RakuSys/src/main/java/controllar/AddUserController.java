@@ -12,18 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class CreateUser
+ * Servlet implementation class CreatePersonalInfoController
  */
-@WebServlet("/CreatePersonalInfoController")
-public class CreatePersonalInfoController extends HttpServlet {
+@WebServlet("/addUser")
+public class AddUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CreatePersonalInfoController() {
+	public AddUserController() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	/**
@@ -31,13 +31,13 @@ public class CreatePersonalInfoController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("GBK");
+		response.setCharacterEncoding("utf-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		System.out.println(111111111);
 
-		String email = request.getParameter("email");
+		/*String email = request.getParameter("email");
 		String email2 = request.getParameter("email2");
 		String radio_mail = request.getParameter("radio_mail");
 		String u = request.getParameter("u");
@@ -46,20 +46,20 @@ public class CreatePersonalInfoController extends HttpServlet {
 		String fname = request.getParameter("fname");
 		String lname_kana = request.getParameter("lname_kana");
 		String fname_kana = request.getParameter("fname_kana");
+		*/
+		System.out.println(222222);
 
-		System.out.println(222222222);
-
-		System.out.println(email);
-		System.out.println(email2);
-		System.out.println(radio_mail);
-		System.out.println(u);
-		System.out.println(p);
-		System.out.println(lname);
-		System.out.println(fname);
-		System.out.println(lname_kana);
-		System.out.println(fname_kana);
-
-		String view = "/InputPersonalInfoScreen.jsp";
+		/*	System.out.println(email);
+			System.out.println(email2);
+			System.out.println(radio_mail);
+			System.out.println(u);
+			System.out.println(p);
+			System.out.println(lname);
+			System.out.println(fname);
+			System.out.println(lname_kana);
+			System.out.println(fname_kana);
+		*/
+		String view = "/addUser.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
@@ -69,8 +69,12 @@ public class CreatePersonalInfoController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
+		System.out.println(23333332);
 		String email = request.getParameter("email");
 		String email2 = request.getParameter("email2");
 		String radio_mail = request.getParameter("radio_mail");
@@ -80,7 +84,8 @@ public class CreatePersonalInfoController extends HttpServlet {
 		String fname = request.getParameter("fname");
 		String lname_kana = request.getParameter("lname_kana");
 		String fname_kana = request.getParameter("fname_kana");
-
+		
+		System.out.println(13333331);
 		request.setAttribute("email", email);
 		request.setAttribute("email2", email2);
 		request.setAttribute("radio_mail", radio_mail);
@@ -90,12 +95,12 @@ public class CreatePersonalInfoController extends HttpServlet {
 		request.setAttribute("fname", fname);
 		request.setAttribute("lname_kana", lname_kana);
 		request.setAttribute("fname_kana", fname_kana);
-
+		System.out.println(33333333);
 		//セッションの設定
 		HttpSession session = request.getSession();
 		String userId = radio_mail;
 		String password = p;
-		String userName = lname+ fname;
+		String userName = lname + fname;
 		String nameKana = lname_kana + fname_kana;
 		session.setAttribute("email", email);
 		session.setAttribute("userId", userId);

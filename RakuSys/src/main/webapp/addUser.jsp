@@ -37,19 +37,7 @@
       }
       //-->
     </script>
-    <form id="formLang1" name="formLang1" action="./CreatePersonalInfoController" method="post">
-      <input type="hidden" name="lang" value="">
-      <input type="hidden" name="service_id" value="top">
-      <div id="language" align="right">
-        日本語
-        <a href="javascript:setLangEn();">English</a>
-
-        <a href="javascript:setLangCn();">简体中文</a>
-
-
-      </div>
-    </form>
-
+  
 
     <div id="contents">
 
@@ -93,7 +81,7 @@
       </div>
       <h2 class="path">楽天会員登録</h2>
 
-      <form name="Regist1Form" method="post" action="./CreatePersonalInfoController" autocomplete="off">
+      <form name="Regist1Form" method="post" action="./addUser" autocomplete="off">
         <input type="hidden" name="service_id" value="top">
 
         <div id="step1" class="step">
@@ -315,16 +303,6 @@
 
   <!-- Rakuten Analytics Tracker (RAT) tags -->
 
-
-  <input type="hidden" name="rat" id="ratAccountId" value="429">
-  <input type="hidden" name="rat" id="ratServiceId" value="1">
-  <input type="hidden" name="rat" id="ratPageLayout" value="pc">
-  <input type="hidden" name="rat" id="ratSiteSection" value="id">
-  <input type="hidden" name="rat" id="ratAdobeSiteSection" value="registration:start">
-
-  <input type="hidden" name="rat" id="ratCustomParameters" value="">
-
-  <input type="hidden" name="rat" id="ratCvEvent" value="">
   <script type="text/javascript" src="//r.r10s.jp/com/rat/js/rat-main.js"></script>
   <!-- End of RAT tags -->
   <script type="text/javascript" src="https://static.id.rakuten.co.jp/static/com/js/id/no_banchi.js"></script>
