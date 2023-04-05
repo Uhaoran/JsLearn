@@ -1,4 +1,4 @@
-package controllar;
+package controller;
 
 import java.io.IOException;
 
@@ -9,25 +9,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import dto.UserInfoDto;
+import entity.UserInfoEntity;
 import service.UserInfoService;
 
 /**
  * Servlet implementation class CreateUser
  */
-@WebServlet("/UserInfoConfirmtionController")
-public class UserInfoConfirmtionController extends HttpServlet {
+@WebServlet("/myPage")
+public class MyPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UserInfoConfirmtionController() {
+	public MyPageController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,21 +35,27 @@ public class UserInfoConfirmtionController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		
-		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("email");
-		String userId = (String) session.getAttribute("userId");
-		String password = (String) session.getAttribute("password");
-		String userName = (String) session.getAttribute("userName");
-		String nameKana = (String) session.getAttribute("nameKana");
 
 		UserInfoService userInfoService = new UserInfoService();
-		userInfoService.createUser(email, userId, password, userName, nameKana);
+		UserInfoDto userInfoDto = new UserInfoDto();
+		UserInfoEntity userInfoEntity=new UserInfoEntity();
+		
+		
+	
+		
+		userInfoEntity.setEmail(userInfoDto.getEmail());
+		userInfoEntity.setUserId(userInfoDto.getUserId());
+		userInfoEntity.setPassword(userInfoDto.getPassword());
+		userInfoEntity.setUserName(userInfoDto.getUserName());
+		userInfoEntity.setNameKana(userInfoDto.getNameKana());
+
+		
+		userInfoService.createUser(userInfoDto);
+		request.setAttribute("userInfoDto", userInfoDto);
 
 		ServletContext sc = this.getServletContext();
 
-		RequestDispatcher rd = sc.getRequestDispatcher("/res.jsp");
+		RequestDispatcher rd = sc.getRequestDispatcher("/RegistrationCompletionScreen.jsp");
 
 		rd.forward(request, response);
 

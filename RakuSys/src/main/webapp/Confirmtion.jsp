@@ -58,8 +58,7 @@
 		</table>
 		<!-- /ID title utility -->
 		<!-- Header line -->
-		<table bgcolor="#bf0000" border="0" cellpadding="0" cellspacing="0"
-			width="100%" style="display: block; margin-bottom: 10px;">
+		<table  style="display: block; margin-bottom: 10px;">
 			<tbody>
 				<tr>
 					<td><img
@@ -187,7 +186,7 @@
 
 
 			<form name="DynaForm" method="post"
-				action="./UserInfoConfirmtionController" autocomplete="off">
+				action="./UserInfoConfirmtion" autocomplete="off">
 				<input type="hidden" name="service_id" value="top"> <input
 					type="submit" value="<<入力画面に戻って変更する" a
 					href="http://localhost:8080/RakuSys/CreateUser">
@@ -195,9 +194,7 @@
 
 			<br> <br>
 
-			<form name="Regist3Form" method="post"
-				action="./UserInfoConfirmtionController" autocomplete="off"
-				id="regist3Form">
+		
 				<input type="hidden" name="service_id" value="top">
 
 				<div style="border: 1px solid #000000; padding: 5px; margin: 5px;">
@@ -243,7 +240,7 @@
 																					楽天会員ニュースは、楽天グループのキャンペーンやイベント情報などをご案内するメールマガジンです。<span
 																					style="color: #bf0000; font-weight: bold;">楽天会員情報にご登録されたメールアドレス宛</span>に<span
 																					style="font-weight: bold;">楽天グループ株式会社</span>よりお送りいたします。<br>
-																				<br>
+																					<br>
 																					※「購読する」をチェック頂いた方には、ご自身のポイント獲得状況が確認できる「ポイント獲得実績のお知らせ」もお届けします。<br>
 																					※楽天会員ニュース・ポイント獲得実績のお知らせは購読管理ページからいつでも配信停止/再開できます。<br>
 																					<br> 購読を希望されない場合は<span

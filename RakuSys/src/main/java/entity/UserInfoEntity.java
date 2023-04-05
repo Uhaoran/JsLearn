@@ -2,67 +2,39 @@ package entity;
 
 public class UserInfoEntity{
 	String email;
-	String email2;
-	String radio_mail;
-	String u;
-	String p;
-	String lname;
-	String fname;
-	String lname_kana;
-	String fname_kana;
+	String userId;
+	String password;
+	String userName;
+	String nameKana;
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getEmail2() {
-		return email2;
+	public String getUserId() {
+		return userId;
 	}
-	public void setEmail2(String email2) {
-		this.email2 = email2;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public String getRadio_mail() {
-		return radio_mail;
+	public String getPassword() {
+		return password;
 	}
-	public void setRadio_mail(String radio_mail) {
-		this.radio_mail = radio_mail;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getU() {
-		return u;
+	public String getUserName() {
+		return userName;
 	}
-	public void setU(String u) {
-		this.u = u;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getP() {
-		return p;
+	public String getNameKana() {
+		return nameKana;
 	}
-	public void setP(String p) {
-		this.p = p;
-	}
-	public String getLname() {
-		return lname;
-	}
-	public void setLname(String lname) {
-		this.lname = lname;
-	}
-	public String getFname() {
-		return fname;
-	}
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
-	public String getLname_kana() {
-		return lname_kana;
-	}
-	public void setLname_kana(String lname_kana) {
-		this.lname_kana = lname_kana;
-	}
-	public String getFname_kana() {
-		return fname_kana;
-	}
-	public void setFname_kana(String fname_kana) {
-		this.fname_kana = fname_kana;
+	public void setNameKana(String nameKana) {
+		this.nameKana = nameKana;
 	}
 	
 }
