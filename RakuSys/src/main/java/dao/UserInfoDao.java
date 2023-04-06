@@ -179,7 +179,7 @@ public class UserInfoDao {
 	 * ログイン
 	 */
 	public UserInfoEntity login(String userId, String password) {
-
+		//修飾子 返却値の型 関数名 ( 引数１の型 引数１, 引数２の型 引数2 ) 
 		UserInfoEntity userInfoEntity = null;
 
 		try {
@@ -213,43 +213,5 @@ public class UserInfoDao {
 		return userInfoEntity;
 	}
 
-	/*
-	 * 個人情報ページ
-	 */
-	public UserInfoEntity myPage(UserInfoEntity userInfoEntity) {
-
-		//修飾子 返却値の型 関数名 ( 引数１の型 引数１, 引数２の型 引数2 ) 
-		try {
-
-			Class.forName("org.postgresql.Driver");
-
-			conn = DriverManager.getConnection(URL, USER, PASSWORD);
-
-			stmt = conn.createStatement();
-
-			String sql = "SELECT(email,user_id,password,name,name_kana) FROM user_info_tbl where user_id='"
-					+ userInfoEntity.getUserId() + "' "
-					+ "AND password='" + userInfoEntity.getPassword() + "' ";
-			rset = stmt.executeQuery(sql);
-
-			userInfoEntity.setEmail(rset.getString("email"));
-			userInfoEntity.setUserId(rset.getString("user_id"));
-			userInfoEntity.setPassword(rset.getString("password"));
-			userInfoEntity.setUserName(rset.getString("name"));
-			userInfoEntity.setNameKana(rset.getString("name_kana"));
-
-			rset.close();
-			stmt.close();
-			conn.close();
-
-		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(UserInfoDao.class.getName()).log(Level.SEVERE, null, ex);
-		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-
-		}
-		return userInfoEntity;
-	}
-
+	
 }

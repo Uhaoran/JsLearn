@@ -55,11 +55,12 @@ public class AddUserController extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String radio_mail = request.getParameter("radio_mail");
+		String u=request.getParameter("u");
 		String userId = "";
 		if (radio_mail.equals("0")) {
 		  userId = email;
 		} else if (radio_mail.equals("1")) {
-		  userId = "u";
+		  userId = u;
 		}
 		String password = request.getParameter("p");
 		String userName = request.getParameter("lname") + request.getParameter("fname");
