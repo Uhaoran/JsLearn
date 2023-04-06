@@ -10,7 +10,6 @@ import entity.UserInfoEntity;
 public class UserInfoService {
 
 	UserInfoDao userInfoDao = new UserInfoDao();
-	UserInfoEntity userInfoEntity = new UserInfoEntity();
 
 	/**
 	 * ユーザ新規作成
@@ -24,6 +23,8 @@ public class UserInfoService {
 		System.out.println(userInfoDto.getUserName());
 		System.out.println(userInfoDto.getNameKana());
 
+		UserInfoEntity userInfoEntity = new UserInfoEntity();
+		
 		userInfoEntity.setEmail(userInfoDto.getEmail());
 		userInfoEntity.setUserId(userInfoDto.getUserId());
 		userInfoEntity.setPassword(userInfoDto.getPassword());
@@ -74,6 +75,8 @@ public class UserInfoService {
 		System.out.println(userInfoDto.getUserName());
 		System.out.println(userInfoDto.getNameKana());
 
+		UserInfoEntity userInfoEntity = new UserInfoEntity();
+
 		userInfoEntity.setEmail(userInfoDto.getEmail());
 		userInfoEntity.setUserId(userInfoDto.getUserId());
 		userInfoEntity.setPassword(userInfoDto.getPassword());
@@ -96,6 +99,8 @@ public class UserInfoService {
 		System.out.println(userInfoDto.getUserName());
 		System.out.println(userInfoDto.getNameKana());
 
+		UserInfoEntity userInfoEntity = new UserInfoEntity();
+
 		userInfoEntity.setEmail(userInfoDto.getEmail());
 		userInfoEntity.setUserId(userInfoDto.getUserId());
 		userInfoEntity.setPassword(userInfoDto.getPassword());
@@ -109,30 +114,46 @@ public class UserInfoService {
 	/*
 	 * ログイン
 	 */
-	public void login(UserInfoDto userInfoDto) {
-
-		System.out.println(userInfoDto.getUserId());
-		System.out.println(userInfoDto.getPassword());
-
-		UserInfoEntity userInfoEntity = new UserInfoEntity();
-		userInfoEntity.setUserId(userInfoDto.getUserId());
-		userInfoEntity.setPassword(userInfoDto.getPassword());
-		
-		if (userInfoDto.getUserId().equals(userInfoEntity.getUserId())
-				&& userInfoDto.getPassword().equals(userInfoEntity.getPassword())) {
-			System.out.println("ログイン出来ました");
-		}
-		userInfoDao.login(userInfoEntity);
+	public UserInfoDto login(String userId, String password) {
+	    UserInfoDto userInfoDto = new UserInfoDto();
+	    try {
+	        UserInfoEntity userInfoEntity = userInfoDao.login(userId, password);
+	        if (userInfoEntity != null) {
+	          
+	        	  if (password.equals(userInfoEntity.getPassword()))  {
+	               
+	                userInfoDto.setEmail(userInfoEntity.getEmail());
+	                userInfoDto.setUserId(userInfoEntity.getUserId());
+	                userInfoDto.setPassword(userInfoEntity.getPassword());
+	                userInfoDto.setUserName(userInfoEntity.getUserName());
+	                userInfoDto.setNameKana(userInfoEntity.getNameKana());
+	            } else {
+	              
+	                System.out.println("パスワードが正しくありません");
+	            }
+	        } else {
+	          
+	            System.out.println("ユーザーが見つかりません");
+	        }
+	    } catch (Exception ex) {
+	       
+	        ex.printStackTrace();
+	    }
+	    return userInfoDto;
 	}
+
 	/*
 	 * 個人情報ページ
 	 */
-	public void userInfo(UserInfoDto userInfoDto) {
+	public void myPage(UserInfoDto userInfoDto) {
+
 		System.out.println(userInfoDto.getEmail());
 		System.out.println(userInfoDto.getUserId());
 		System.out.println(userInfoDto.getPassword());
 		System.out.println(userInfoDto.getUserName());
 		System.out.println(userInfoDto.getNameKana());
+
+		UserInfoEntity userInfoEntity = new UserInfoEntity();
 
 		userInfoEntity.setEmail(userInfoDto.getEmail());
 		userInfoEntity.setUserId(userInfoDto.getUserId());
@@ -140,7 +161,7 @@ public class UserInfoService {
 		userInfoEntity.setUserName(userInfoDto.getUserName());
 		userInfoEntity.setNameKana(userInfoDto.getNameKana());
 
-		userInfoDao.UserInfo(userInfoEntity);
+		
 
 	}
 }

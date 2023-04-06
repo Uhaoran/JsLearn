@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.UserInfoDto;
-import entity.UserInfoEntity;
 import service.UserInfoService;
 
 /**
@@ -28,6 +28,18 @@ public class MyPageController extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		String view = "/Login.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+		dispatcher.forward(request, response);
+	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,21 +49,12 @@ public class MyPageController extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		UserInfoService userInfoService = new UserInfoService();
-		UserInfoDto userInfoDto = new UserInfoDto();
-		UserInfoEntity userInfoEntity=new UserInfoEntity();
-		
-		
-	
-		
-		userInfoEntity.setEmail(userInfoDto.getEmail());
-		userInfoEntity.setUserId(userInfoDto.getUserId());
-		userInfoEntity.setPassword(userInfoDto.getPassword());
-		userInfoEntity.setUserName(userInfoDto.getUserName());
-		userInfoEntity.setNameKana(userInfoDto.getNameKana());
+		List<UserInfoDto> userList = userInfoService.selectAll();
 
-		
-		userInfoService.createUser(userInfoDto);
-		request.setAttribute("userInfoDto", userInfoDto);
+	
+
+		request.setAttribute("userList", userList);
+
 
 		ServletContext sc = this.getServletContext();
 

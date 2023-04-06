@@ -178,28 +178,27 @@ public class UserInfoDao {
 	/**
 	 * ログイン
 	 */
-	public void login(UserInfoEntity userInfoEntity) {
-		List<UserInfoEntity> loginList = new ArrayList<>();
+	public UserInfoEntity login(String userId, String password) {
+
+		UserInfoEntity userInfoEntity = null;
+
 		try {
 			Class.forName("org.postgresql.Driver");
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 
 			stmt = conn.createStatement();
 
-			String sql = "SELECT *FROM user_info_tbl WHERE user_id ='" + userInfoEntity.getUserId()
-					+ "' AND password='" + userInfoEntity.getPassword() + "' ";
+			String sql = "SELECT *FROM user_info_tbl WHERE user_id ='" + userId
+					+ "' AND password='" + password + "' ";
 			rset = stmt.executeQuery(sql);
-			if (rset != null) {
-				while (rset.next()) {
 
-					userInfoEntity.setEmail(rset.getString("email"));
-					userInfoEntity.setUserId(rset.getString("user_id"));
-					userInfoEntity.setPassword(rset.getString("password"));
-					userInfoEntity.setUserName(rset.getString("name"));
-					userInfoEntity.setNameKana(rset.getString("name_kana"));
-
-					loginList.add(userInfoEntity);
-				}
+			if (rset.next()) {
+				userInfoEntity = new UserInfoEntity();
+				userInfoEntity.setEmail(rset.getString("email"));
+				userInfoEntity.setUserId(rset.getString("user_id"));
+				userInfoEntity.setPassword(rset.getString("password"));
+				userInfoEntity.setUserName(rset.getString("name"));
+				userInfoEntity.setNameKana(rset.getString("name_kana"));
 			}
 
 			rset.close();
@@ -211,14 +210,15 @@ public class UserInfoDao {
 					.getName()).log(Level.SEVERE, null, ex);
 		}
 
+		return userInfoEntity;
 	}
 
 	/*
 	 * 個人情報ページ
 	 */
-	public void UserInfo(UserInfoEntity userInfoEntity) {
+	public UserInfoEntity myPage(UserInfoEntity userInfoEntity) {
 
-
+		//修飾子 返却値の型 関数名 ( 引数１の型 引数１, 引数２の型 引数2 ) 
 		try {
 
 			Class.forName("org.postgresql.Driver");
@@ -249,5 +249,7 @@ public class UserInfoDao {
 			e.printStackTrace();
 
 		}
+		return userInfoEntity;
 	}
+
 }

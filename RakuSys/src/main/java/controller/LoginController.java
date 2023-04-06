@@ -3,13 +3,11 @@ package controller;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dto.UserInfoDto;
 import service.UserInfoService;
@@ -54,31 +52,27 @@ public class LoginController extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		UserInfoService userInfoService = new UserInfoService();
-		UserInfoDto userInfoDto = new UserInfoDto();
-		
-		
+
 		String userId = request.getParameter("u");
 		String password = request.getParameter("p");
-		
-		
-		
-		userInfoDto.setUserId(userId);
-		userInfoDto.setPassword(password);
-		
-		HttpSession session = request.getSession();
+		UserInfoDto userInfoDto = userInfoService.login(userId, password);
 
-		session.setAttribute("userInfoDto", userInfoDto);
-		
-		
-	
-		
-		userInfoService.login(userInfoDto);
-		
-		ServletContext sc = this.getServletContext();
+		if (userInfoDto != null) {
 
-		RequestDispatcher rd = sc.getRequestDispatcher("/MyPage.jsp");
+			request.setAttribute("email", userInfoDto.getEmail());
+			request.setAttribute("userId", userInfoDto.getUserId());
+			request.setAttribute("password", userInfoDto.getPassword());
+			request.setAttribute("userName", userInfoDto.getUserName());
+			request.setAttribute("nameKana", userInfoDto.getNameKana());
+			request.setAttribute("userInfo", userInfoDto);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/MyPage.jsp");
+			dispatcher.forward(request, response);
+		} else {
 
-		rd.forward(request, response);
+			request.setAttribute("error", "ユーザー名またはパスワードが間違っています");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/Login.jsp");
+			dispatcher.forward(request, response);
+		}
+
 	}
-
 }
