@@ -70,7 +70,7 @@ public class LoginController extends HttpServlet {
 		} else {
 
 			request.setAttribute("エラー", "ユーザー名またはパスワードが間違っています");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/Login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/LoginError.jsp");
 			dispatcher.forward(request, response);
 		}
 

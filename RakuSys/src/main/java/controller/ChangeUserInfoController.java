@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,11 +35,26 @@ public class ChangeUserInfoController extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 	
+	
+		
+		String view = "/MyPage.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+		dispatcher.forward(request, response);
+	}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 		String email = request.getParameter("email");
-		String userId = request.getParameter("radio_mail");
-		String password = request.getParameter("p");
-		String userName = request.getParameter("lname") + request.getParameter("fname");
-		String nameKana = request.getParameter("lname_kana") + request.getParameter("fname_kana");
+		String userId = request.getParameter("userId");
+		String password = request.getParameter("password");
+		String userName = request.getParameter("userName");
+		String nameKana = request.getParameter("nameKana");
 
 		UserInfoService userInfoService = new UserInfoService();
 		UserInfoDto userInfoDto = new UserInfoDto();
@@ -51,16 +67,17 @@ public class ChangeUserInfoController extends HttpServlet {
 
 		userInfoService.changeUserInfo(userInfoDto);
 		
-		String view = "/UserList.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
-	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+		request.setAttribute("email", userInfoDto.getEmail());
+		request.setAttribute("userId", userInfoDto.getUserId());
+		request.setAttribute("password", userInfoDto.getPassword());
+		request.setAttribute("userName", userInfoDto.getUserName());
+		request.setAttribute("nameKana", userInfoDto.getNameKana());
+		request.setAttribute("userInfo", userInfoDto);
+		ServletContext sc = this.getServletContext();
+
+		RequestDispatcher rd = sc.getRequestDispatcher("/Mypage.jsp");
+
+		rd.forward(request, response);
 	}
 
 }

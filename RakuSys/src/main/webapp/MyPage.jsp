@@ -8,11 +8,24 @@
 <title>ユーザー情報</title>
 </head>
 <body>
-<h1>ユーザー情報</h1>
-<p>メールアドレス：${email}</p>
-<p>ユーザーID：${userId}</p>
-<p>パスワード：${password}</p>
-<p>ユーザー名：${userName}</p>
-<p>カナ氏名：${nameKana}</p>
+	<form action="./changeUserInfo" method="post">
+	<h1>ユーザー情報</h1>
+	<p>
+		メールアドレス：<input type="text" name="email" value="${email}">
+	</p>
+	<p>
+		ユーザーID：<input type="text" name="userId" value="${userId}">
+	</p>
+	<p>
+		パスワード：<input type="text" name="password" value="${password}">
+	</p>
+	<p>
+		ユーザー名：<input type="text" name="userName" value="${userName}">
+	</p>
+	<p>
+		カナ氏名：<input type="text" name="nameKana" value="${nameKana}">
+	</p>
+	<button type="submit">変更</button>
+	</form>
 </body>
 </html>
