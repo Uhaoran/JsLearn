@@ -33,7 +33,7 @@
 					<td><%= dto.getPassword()%></td>
 					<td><%= dto.getUserName()%></td>
 					<td><%= dto.getNameKana()%></td>
-<td><input type="button" value="編集" name="row" onclick="location.href='ChangeUserList.jsp?id=<%= dto.getUserId()%>&email=<%= dto.getEmail()%>&password=<%= dto.getPassword()%>&userName=<%= dto.getUserName()%>&nameKana=<%= dto.getNameKana()%>'">
+<td><input type="button" value="編集" name="row" onclick="location.href='ChangeUserList.jsp?userId=<%= dto.getUserId()%>&email=<%= dto.getEmail()%>&password=<%= dto.getPassword()%>&userName=<%= dto.getUserName()%>&nameKana=<%= dto.getNameKana()%>'">
 </td>
 				    </tr>
 	

@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,23 +49,32 @@ public class ChangeUserListController extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
-		String userId = request.getParameter("userId");
+		
 		String email = request.getParameter("email");
+		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
 		String userName = request.getParameter("userName");
 		String nameKana = request.getParameter("nameKana");
 
 		UserInfoDto userInfoDto = new UserInfoDto();
-		userInfoDto.setUserId(userId);
+		
 		userInfoDto.setEmail(email);
+		userInfoDto.setUserId(userId);
 		userInfoDto.setPassword(password);
 		userInfoDto.setUserName(userName);
 		userInfoDto.setNameKana(nameKana);
 
 		UserInfoService userInfoService = new UserInfoService();
 		userInfoService.changeUserInfo(userInfoDto);
+		
+		
 
-		response.sendRedirect(request.getContextPath() + "./userList");
+		//response.sendRedirect(request.getContextPath() + "./userList");
+		ServletContext sc = this.getServletContext();
+
+		RequestDispatcher rd = sc.getRequestDispatcher("/UserList.jsp");
+
+		rd.forward(request, response);
 	}
 
 }

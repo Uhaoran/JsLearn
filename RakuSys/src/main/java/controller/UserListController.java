@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,7 +51,27 @@ public class UserListController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String userId = request.getParameter("userId");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String userName = request.getParameter("userName");
+		String nameKana = request.getParameter("nameKana");
+
+		UserInfoDto userInfoDto = new UserInfoDto();
+		userInfoDto.setUserId(userId);
+		userInfoDto.setEmail(email);
+		userInfoDto.setPassword(password);
+		userInfoDto.setUserName(userName);
+		userInfoDto.setNameKana(nameKana);
+
+		UserInfoService userInfoService = new UserInfoService();
+		userInfoService.changeUserInfo(userInfoDto);
 		
+		ServletContext sc = this.getServletContext();
+
+		RequestDispatcher rd = sc.getRequestDispatcher("/ChangeUserList.jsp");
+
+		rd.forward(request, response);
 
 	}
 

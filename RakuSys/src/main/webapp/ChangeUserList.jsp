@@ -9,15 +9,15 @@
 </head>
 <body>
 	<h1>ユーザー編集</h1>
-	<% String id = request.getParameter("id"); %>
+	<% String userId = request.getParameter("userId"); %>
 	<% String email = request.getParameter("email"); %>
 	<% String password = request.getParameter("password"); %>
 	<% String userName = request.getParameter("userName"); %>
 	<% String nameKana = request.getParameter("nameKana"); %>
 
-	<form>
-		<label for="id">ユーザID:</label> <input type="text" id="id" name="id"
-			value="<%= id %>"><br>
+	<form method="post" action="./changeUserList">
+		<label for="userId">ユーザID:</label> <input type="text" id="id" name="userId"
+			value="<%= userId %>"><br>
 		<br> <label for="email">メールアドレス:</label> <input type="text"
 			id="email" name="email" value="<%= email %>"><br>
 		<br> <label for="password">パスワード:</label> <input type="text"
