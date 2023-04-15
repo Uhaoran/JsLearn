@@ -16,7 +16,7 @@
 	<% String nameKana = request.getParameter("nameKana"); %>
 
 	<form method="post" action="./changeUserList">
-		<label for="userId">ユーザID:</label> <input type="text" id="id" name="userId"
+		<label for="userId">ユーザID:</label> <input type="text" id="userId" name="userId"
 			value="<%= userId %>"><br>
 		<br> <label for="email">メールアドレス:</label> <input type="text"
 			id="email" name="email" value="<%= email %>"><br>

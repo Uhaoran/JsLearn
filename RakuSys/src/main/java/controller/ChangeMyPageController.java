@@ -76,7 +76,7 @@ public class ChangeMyPageController extends HttpServlet {
 		
 		ServletContext sc = this.getServletContext();
 
-		RequestDispatcher rd = sc.getRequestDispatcher("/Mypage.jsp");
+		RequestDispatcher rd = sc.getRequestDispatcher("/UserList.jsp");
 
 		rd.forward(request, response);
 	}

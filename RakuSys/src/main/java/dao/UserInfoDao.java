@@ -125,7 +125,6 @@ public class UserInfoDao {
 		return userList;
 
 	}
-	
 
 	/*
 	 * ユーザ情報変更
@@ -139,11 +138,11 @@ public class UserInfoDao {
 					+ "SET email='" + userInfoEntity.getEmail() + "',\n"
 					+ "user_id='" + userInfoEntity.getUserId() + "',\n"
 					+ "password='" + userInfoEntity.getPassword() + "',\n"
-					+ "user_name='" + userInfoEntity.getUserName() + "',\n"
-					+ "name_kana='" + userInfoEntity.getNameKana() + "',\n";
+					+ "name='" + userInfoEntity.getUserName() + "',\n"
+					+ "name_kana='" + userInfoEntity.getNameKana() + "';";
 
 			stmt.executeUpdate(sql);
-
+			System.out.println(sql);
 			stmt.close();
 			conn.close();
 
@@ -214,5 +213,4 @@ public class UserInfoDao {
 		return userInfoEntity;
 	}
 
-	
 }

@@ -8,7 +8,7 @@
 <title>ユーザー情報</title>
 </head>
 <body>
-	<form action="./changeUserInfo" method="post">
+	<form action="./changeMyPage" method="post">
 	<h1>ユーザー情報</h1>
 	<p>
 		メールアドレス：<input type="text" name="email" value="${email}">
