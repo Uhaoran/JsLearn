@@ -39,6 +39,20 @@ public class ChangeUserListController extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 	
+
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		
 		String email = request.getParameter("email");
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
@@ -60,20 +74,6 @@ public class ChangeUserListController extends HttpServlet {
 		
 
 		request.setAttribute("userInfoDto", userInfoDto);
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		
-		
 
 		ServletContext sc = this.getServletContext();
 
