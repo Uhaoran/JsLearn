@@ -1,0 +1,6 @@
+@charset "UTF-8";
+function editUser(userId) {
+	var form = document.getElementById("editForm");
+	form.querySelector("[name='userId']").value = userId;
+	form.submit();
+}

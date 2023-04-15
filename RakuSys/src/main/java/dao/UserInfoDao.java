@@ -125,6 +125,7 @@ public class UserInfoDao {
 		return userList;
 
 	}
+	
 
 	/*
 	 * ユーザ情報変更

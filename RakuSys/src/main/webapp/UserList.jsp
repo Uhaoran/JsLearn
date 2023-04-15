@@ -10,6 +10,7 @@
 <title>ユーザー一覧</title>
 </head>
 <body>
+<form action="./userList" method="post">
 	<h1>ユーザー一覧</h1>
 	<table>
 		
@@ -20,6 +21,7 @@
 				<th>パスワード</th>
 				<th>氏名</th>
 				<th>氏名(フリガナ)</th>
+				<th><a href="" target="_blank">編集</a></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,6 +33,8 @@
 					<td><%= dto.getPassword()%></td>
 					<td><%= dto.getUserName()%></td>
 					<td><%= dto.getNameKana()%></td>
+<td><input type="button" value="編集" name="row" onclick="location.href='ChangeUserList.jsp?id=<%= dto.getUserId()%>&email=<%= dto.getEmail()%>&password=<%= dto.getPassword()%>&userName=<%= dto.getUserName()%>&nameKana=<%= dto.getNameKana()%>'">
+</td>
 				    </tr>
 	
 	<% } %>
@@ -38,5 +42,6 @@
 		
 		</tbody>
 	</table>
+	</form>
 </body>
 </html>

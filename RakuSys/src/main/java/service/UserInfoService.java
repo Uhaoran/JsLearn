@@ -61,7 +61,7 @@ public class UserInfoService {
 		return userList;
 
 	}
-
+	
 	/**
 	 * ユーザ変更
 	 * 
@@ -76,7 +76,8 @@ public class UserInfoService {
 		System.out.println(userInfoDto.getNameKana());
 
 		UserInfoEntity userInfoEntity = new UserInfoEntity();
-
+		
+		
 		userInfoEntity.setEmail(userInfoDto.getEmail());
 		userInfoEntity.setUserId(userInfoDto.getUserId());
 		userInfoEntity.setPassword(userInfoDto.getPassword());

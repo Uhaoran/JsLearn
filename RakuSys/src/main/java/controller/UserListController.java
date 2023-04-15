@@ -37,8 +37,6 @@ public class UserListController extends HttpServlet {
 		UserInfoService userInfoService = new UserInfoService();
 		List<UserInfoDto> userList = userInfoService.selectAll();
 
-	
-
 		request.setAttribute("userList", userList);
 
 		String view = "/UserList.jsp";
@@ -51,7 +49,9 @@ public class UserListController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+
+		
+
 	}
 
 }
