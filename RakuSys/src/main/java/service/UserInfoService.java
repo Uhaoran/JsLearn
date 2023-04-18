@@ -63,6 +63,33 @@ public class UserInfoService {
 	}
 	
 	/**
+	 * 条件検索
+	 * @return
+	 */
+	public List<UserInfoDto> searchUser() {
+
+		List<UserInfoEntity> list = userInfoDao.selectAll();
+
+		List<UserInfoDto> userList = new ArrayList<>();
+
+		for (UserInfoEntity userInfoEntity : list) {
+
+			UserInfoDto userInfoDto = new UserInfoDto();
+
+			userInfoDto.setEmail(userInfoEntity.getEmail());
+			userInfoDto.setUserId(userInfoEntity.getUserId());
+			userInfoDto.setPassword(userInfoEntity.getPassword());
+			userInfoDto.setUserName(userInfoEntity.getUserName());
+			userInfoDto.setNameKana(userInfoEntity.getNameKana());
+
+			userList.add(userInfoDto);
+		}
+
+		return userList;
+
+	}
+	
+	/**
 	 * ユーザ変更
 	 * 
 	 * @param userInfoDto
@@ -143,26 +170,5 @@ public class UserInfoService {
 	    return userInfoDto;
 	}
 
-	/*
-	 * 個人情報ページ
-	 */
-	public void myPage(UserInfoDto userInfoDto) {
-
-		System.out.println(userInfoDto.getEmail());
-		System.out.println(userInfoDto.getUserId());
-		System.out.println(userInfoDto.getPassword());
-		System.out.println(userInfoDto.getUserName());
-		System.out.println(userInfoDto.getNameKana());
-
-		UserInfoEntity userInfoEntity = new UserInfoEntity();
-
-		userInfoEntity.setEmail(userInfoDto.getEmail());
-		userInfoEntity.setUserId(userInfoDto.getUserId());
-		userInfoEntity.setPassword(userInfoDto.getPassword());
-		userInfoEntity.setUserName(userInfoDto.getUserName());
-		userInfoEntity.setNameKana(userInfoDto.getNameKana());
-
-		
-
-	}
+	
 }

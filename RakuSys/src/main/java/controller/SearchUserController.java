@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,14 +16,14 @@ import service.UserInfoService;
 /**
  * Servlet implementation class CreatePersonalInfoController
  */
-@WebServlet("/userList")
-public class UserListController extends HttpServlet {
+@WebServlet("/searchUser")
+public class SearchUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UserListController() {
+	public SearchUserController() {
 		super();
 
 	}
@@ -35,10 +34,14 @@ public class UserListController extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
+		String userId = request.getParameter("userId");
 		UserInfoService userInfoService = new UserInfoService();
 		List<UserInfoDto> userList = userInfoService.selectAll();
-		
-		request.setAttribute("userList", userList);
+		UserInfoDto dto = new UserInfoDto();
+		if (userId.equals(dto.getUserId())) {
+
+			request.setAttribute("userList", userList);
+		}
 
 		String view = "/UserList.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
@@ -50,12 +53,6 @@ public class UserListController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		ServletContext sc = this.getServletContext();
-
-		RequestDispatcher rd = sc.getRequestDispatcher("/ChangeUserList.jsp");
-
-		rd.forward(request, response);
 
 	}
 
